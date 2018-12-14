@@ -31,17 +31,31 @@ app.use('*', (req, res) => {
     })
 });
 
-function startServer() {
+function startServer(testEnv) {
+
     return new Promise((resolve, reject) => {
-        mongoose.connect('MONGO_URL', {useNewUrlParser: true}, err => {
+        let mongoUrl;
+
+        if (testEnv) {
+            mongoUrl = TEST_MONGO_URL;
+        } else {
+            mongoUrl = MONGO_URL;
+        }
+        mongoose.connect(mongoUrl, { useNewUrlParser: true }, err => {
             if (err) {
-                console.log(err);
-                return reject();
+                console.error(err);
+                return reject(err);
+            } else {
+                server = app.listen(PORT, () => {
+                    console.log(`Express server listening on http://localhost:${PORT}`);
+                    resolve();
+                }).on('error', err => {
+                    mongoose.disconnect();
+                    console.error(err);
+                    reject(err);
+                });
             }
-        server = app.listen(PORT, () => {
-            console.log(`Express server listening on httpL//localhost:${PORT}`);
-        })
-        })
+        });
     });
 }
 
