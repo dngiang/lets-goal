@@ -1,0 +1,4 @@
+languge: node_js
+node_js: node_js
+services:
+-mongodb
