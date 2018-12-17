@@ -101,7 +101,7 @@ describe('Integration tests for: /api/goal', function () {
             .get('/api/goal')
             .set('Authorization', `Bearer ${jwtToken}`)
             .then(res => {
-                expect(res).to.have.status(HTTP_STATUS_CODES.OK);
+                expect(res).to.have.status(HTTP_CODES.OK);
                 expect(res).to.be.json;
                 expect(res.body).to.be.a('array');
                 expect(res.body).to.have.lengthOf.at.least(1);
@@ -131,7 +131,7 @@ describe('Integration tests for: /api/goal', function () {
                     .set('Authorization', `Bearer ${jwtToken}`);
             })
             .then(res => {
-                expect(res).to.have.status(HTTP_STATUS_CODES.OK);
+                expect(res).to.have.status(HTTP_CODES.OK);
                 expect(res).to.be.json;
                 expect(res.body).to.be.a('object');
                 expect(res.body).to.include.keys('user', 'title', 'content');
@@ -158,7 +158,7 @@ describe('Integration tests for: /api/goal', function () {
                     .send(newGoalData);
             })
             .then(res => {
-                expect(res).to.have.status(HTTP_STATUS_CODES.NO_CONTENT);
+                expect(res).to.have.status(HTTP_CODES.NO_CONTENT);
 
                 return Goal.findById(goalToUpdate.id);
             })
@@ -185,7 +185,7 @@ describe('Integration tests for: /api/goal', function () {
                     .set('Authorization', `Bearer ${jwtToken}`);
             })
             .then(res => {
-                expect(res).to.have.status(HTTP_STATUS_CODES.NO_CONTENT);
+                expect(res).to.have.status(HTTP_CODES.NO_CONTENT);
 
                 return Goal.findById(goalToDelete.id);
             })

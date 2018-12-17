@@ -85,7 +85,7 @@ describe('Integration tests for : /api/auth', function () {
                 expect(res.body).to.be.a('object');
                 expect(res.body).to.be.include.keys('jwtToken');
 
-                const jwtPayload = jsonwebtoke.verify(res.body.jwtToken, JWT_SECRET, {
+                const jwtPayload = jsonwebtoken.verify(res.body.jwtToken, JWT_SECRET, {
                     algorithm: ['HS256']
                 });
                 expect(jwtPayload.user).to.be.a('object');
@@ -110,7 +110,7 @@ describe('Integration tests for : /api/auth', function () {
                 expect(res.body).to.be.a('object');
                 expect(res.body).to.be.include.keys('jwtToken');
 
-                const newJwtPayload = jsonwebtoke.verify(res.body.jwtToken, JWT_SECRET, {
+                const newJwtPayload = jsonwebtoken.verify(res.body.jwtToken, JWT_SECRET, {
                     algorithm: ['HS256']
                 });
                 expect(jwtPayload.user).to.be.a('object');
