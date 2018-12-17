@@ -8,7 +8,7 @@ const userRouter = express.Router();
 
 userRouter.post('/', (req,res) => { //create a new user
     const newUser = { //in server.js, we did express.json() to parse the body
-        name:req.body.name,
+        name: req.body.name,
         email: req.body.email,
         username: req.body.username,
         password: req.body.password,
@@ -35,11 +35,11 @@ userRouter.post('/', (req,res) => { //create a new user
 
         User.create(newUser) //creating new user
             .then(createdUser => {
-                return res.status(HTTP_CODES.CREATED).json(createdUser.serialzier()); //serialize. never return raw mongodb data
+                return res.status(HTTP_CODES.CREATED).json(createdUser.serialize()); //serialize. never return raw mongodb data
             })
             .catch(error => {
                 console.error(error);
-                return res.status(HTTP_CODES.INTERNAL_SERVER_ERROR).json({error: error.messge});
+                return res.status(HTTP_CODES.INTERNAL_SERVER_ERROR).json({error: error.message});
             });
     });
 });

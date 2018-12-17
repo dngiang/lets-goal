@@ -10,31 +10,28 @@ const { User } = require('../app/user/user.model');
 const expect = chai.expect;
 chai.use(chaiHttp);
 
-describe ('Integration tests for : /api/user', function () {
+describe('Integration tests for: /api/user', function () {
     let testUser;
 
-    before(function (){
+    before(function () {
         return startServer(true);
     });
 
-    beforeEach( function () {
+    beforeEach(function () {
         testUser = createFakerUser();
-
         return User.create(testUser)
             .then(() => { })
             .catch(err => {
-                console.error(err);
             });
     });
 
     afterEach(function () {
-        return new Promise ((resolve, reject) => {
+        return new Promise((resolve, reject) => {
             mongoose.connection.dropDatabase()
                 .then(result => {
                     resolve(result);
                 })
                 .catch(err => {
-                    console.error(err);
                     reject(err);
                 });
         });
@@ -49,21 +46,21 @@ describe ('Integration tests for : /api/user', function () {
         return chai.request(app)
             .post('/api/user')
             .send(newUser)
-            .then( res => {
+            .then(res => {
                 expect(res).to.have.status(HTTP_CODES.CREATED);
                 expect(res).to.be.json;
                 expect(res.body).to.be.a('object');
-                expect(res.body).to.include.keys('id', 'name','username','email');
+                expect(res.body).to.include.keys('id', 'name', 'username', 'email');
                 expect(res.body.name).to.equal(newUser.name);
                 expect(res.body.email).to.equal(newUser.email);
                 expect(res.body.username).to.equal(newUser.username);
-            });
+        });
     });
 
     function createFakerUser() {
         return {
             name: `${faker.name.firstName()} ${faker.name.lastName()}`,
-            username: `${faker.lorem.word()} ${faker.random.number(100)}`,
+            username: `${faker.lorem.word()}${faker.random.number(100)}`,
             password: faker.internet.password(),
             email: faker.internet.email()
         };

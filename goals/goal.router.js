@@ -81,7 +81,7 @@ goalRouter.put('/:goalid', jwtPassportMiddleware, (req,res) => {
     if (validation.error){
         return res.status(HTTP_CODES.BAD_REQUEST).json({error: validation.error});
     }
-    Goal.findByIdAndUpdate(req.params.godlid, goalUpdate) //update here, goalUpdate
+    Goal.findByIdAndUpdate(req.params.goalid, goalUpdate) //update here, goalUpdate
         .then(() => {
             return res.status(HTTP_CODES.NO_CONTENT).end(); //ending the req completely
         })
