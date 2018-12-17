@@ -9,7 +9,7 @@ const faker = require('faker');
 const { HTTP_STATUS_CODES, JWT_SECRET, JWT_EXPIRY } = require('../app/config');
 const { startServer, stopServer, app } = require('../app/server.js');
 const { User } = require('../app/user/user.model');
-const { Goal } = require('../app/goals/goal.model');
+const { Goal } = require('../goals/goal.model');
 
 const expect = chai.expect;
 chai.use(chaiHttp); 
