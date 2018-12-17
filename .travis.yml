@@ -8,3 +8,4 @@ deploy:
   app: lets-goal
   on:
     repo: intense-savannah-21522
+    branch: master
