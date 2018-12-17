@@ -22,7 +22,6 @@ describe('Integration tests for : /api/auth', function () {
         testUser = createFakerUser(); //create a fakeUser object and manually stored the fake user into mongodb
 
         return User.hashPassword(testUser.password).then(hashedPassword => { //look at this
-
             return User.create({
                 name: testUser.name,
                 email: testUser.email,

@@ -17,19 +17,15 @@ chai.use(chaiHttp);
 describe('Integration tests for: /api/goal', function () {
     let testUser, jwtToken;
 
-
     before(function () {
-
         return startServer(true);
     });
-
 
     beforeEach(function () {
         testUser = createFakerUser();
 
         return User.hashPassword(testUser.password)
             .then(hashedPassword => {
-
                 return User.create({
                     name: testUser.name,
                     email: testUser.email,
@@ -76,9 +72,7 @@ describe('Integration tests for: /api/goal', function () {
 
 
     afterEach(function () {
-
         return new Promise((resolve, reject) => {
-
             mongoose.connection.dropDatabase()
                 .then(result => {
                     resolve(result);
@@ -92,7 +86,6 @@ describe('Integration tests for: /api/goal', function () {
 
 
     after(function () {
-
         return stopServer();
     });
 
@@ -153,7 +146,7 @@ describe('Integration tests for: /api/goal', function () {
                 goalToUpdate = goals[0];
 
                 return chai.request(app)
-                    .put(`/api/goals/${goalToUpdate.id}`)
+                    .put(`/api/goal/${goalToUpdate.id}`)
                     .set('Authorization', `Bearer ${jwtToken}`)
                     .send(newGoalData);
             })
@@ -197,7 +190,7 @@ describe('Integration tests for: /api/goal', function () {
     function createFakerUser() {
         return {
             name: `${faker.name.firstName()} ${faker.name.lastName()}`,
-            username: `${faker.lorem.word()}${faker.random.number(100)}`,
+            username: `${faker.lorem.word()} ${faker.random.number(100)}`,
             password: faker.internet.password(),
             email: faker.internet.email()
         };

@@ -79,9 +79,9 @@ goalRouter.put('/:goalid', jwtPassportMiddleware, (req,res) => {
 
     const validation = Joi.validate(goalUpdate, GoalJoiSchema); //validate it does have title and content by the schema
     if (validation.error){
-        return res.status(HTTP_CODES.BAD_REQUEST).json({ error: validation.error});
+        return res.status(HTTP_CODES.BAD_REQUEST).json({error: validation.error});
     }
-    Goal.findbyIdandUpdate(req.params.godlid, goalUpdate) //update here, goalUpdate
+    Goal.findByIdAndUpdate(req.params.godlid, goalUpdate) //update here, goalUpdate
         .then(() => {
             return res.status(HTTP_CODES.NO_CONTENT).end(); //ending the req completely
         })
@@ -91,12 +91,12 @@ goalRouter.put('/:goalid', jwtPassportMiddleware, (req,res) => {
 });
 
 //DELETING GOAL
-goalRouter.delete('/:goalid',jwtPassportMiddleware, (req,res) => {
-    Goal.findbyIdAndDelete(req.paramts.goalid)
-        .then(() =>{
+goalRouter.delete('/:goalid', jwtPassportMiddleware, (req,res) => {
+    Goal.findByIdAndDelete(req.params.goalid)
+        .then(() => {
             return res.status(HTTP_CODES.NO_CONTENT).end();
         })
-        .catch(error =>{
+        .catch(error => {
             return res.status(HTTP_CODES.INTERNAL_SERVER_ERROR).json(error);
         });
 });
