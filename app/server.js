@@ -39,9 +39,9 @@ function startServer(testEnv) {
         let mongoUrl;
 
         if (testEnv) {
-            mongoUrl = TEST_MONGO_URL;
+            mongoUrl = 'mongodb://testuser:goaling1@ds237574.mlab.com:37574/test-lets-goal';
         } else {
-            mongoUrl = MONGO_URL;
+            mongoUrl = 'mongodb://testuser:goaling1@ds237574.mlab.com:37574/lets-goal';
         }
         mongoose.connect(mongoUrl, { useNewUrlParser: true }, err => {
             if (err) {
