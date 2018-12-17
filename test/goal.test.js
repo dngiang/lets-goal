@@ -178,7 +178,7 @@ describe('Integration tests for: /api/goal', function () {
             .then(goals => {
                 expect(goals).to.be.a('array');
                 expect(goals).to.have.lengthOf.at.least(1);
-                goalToDelete = notes[0];
+                goalToDelete = goals[0];
 
                 return chai.request(app)
                     .delete(`/api/goal/${goalToDelete.id}`)

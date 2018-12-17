@@ -10,6 +10,8 @@ const { userRouter } = require('./user/user.router');
 const { authRouter } = require('../auth/auth.router');
 const { goalRouter } = require('../goals/goal.router');
 
+mongoose.Promise = global.Promise;
+
 let server;
 
 const app = express(); //create app for express
@@ -72,6 +74,10 @@ function stopServer() {
             });
         });
     });
+}
+
+if(require.main === module) {
+    startServer().catch(err => console.error(err));
 }
 
 module.exports = { app, startServer, stopServer};
