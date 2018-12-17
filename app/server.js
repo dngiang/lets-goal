@@ -3,7 +3,7 @@ const morgan = require('morgan');
 const mongoose = require('mongoose'); //connect to mongo db
 const passport = require('passport');
 
-const { PORT, HTTP_CODES, MONGO_URL} = require('./config');
+const { PORT, HTTP_CODES, MONGO_URL, TEST_MONGO_URL} = require('./config');
 const { localStrategy, jwtStrategy } = require('../auth/auth.strategy'); //we need to tell passport to .use in order to activate it
 
 const { userRouter } = require('./user/user.router');
@@ -19,7 +19,7 @@ passport.use(localStrategy);
 passport.use(jwtStrategy);
 
 //middleware, intercept calls b4 they get to the server
-app.use(morgan('combined'));
+app.use(morgan('common'));
 app.use(express.json()); //access the body content inside express
 app.use(express.static('./public'));
 
@@ -27,10 +27,8 @@ app.use('/api/user', userRouter); //setting the user route for userRouter in use
 app.use('/api/auth', authRouter);
 app.use('/api/goal', goalRouter);
 
-app.use('*', (req, res) => {
-    res.status(HTTP_CODES.NOT_FOUND).json({
-        error: 'Not found.'
-    })
+app.use('*', function (req, res) {
+    res.status(HTTP_CODES.NOT_FOUND).json({error: 'Not found.'});
 });
 
 function startServer(testEnv) {
@@ -39,9 +37,9 @@ function startServer(testEnv) {
         let mongoUrl;
 
         if (testEnv) {
-            mongoUrl = 'mongodb://testuser:goaling1@ds237574.mlab.com:37574/lets-goal';
+            mongoUrl = TEST_MONGO_URL;
         } else {
-            mongoUrl = 'mongodb://testuser:goaling1@ds237574.mlab.com:37574/lets-goal';
+            mongoUrl = MONGO_URL;
         }
         mongoose.connect(mongoUrl, { useNewUrlParser: true }, err => {
             if (err) {
@@ -68,9 +66,10 @@ function stopServer() {
                 if(err) {
                     console.log(err);
                     return reject (err);
-                }
+                } else {
                 console.log ('Express server shut down');
                 resolve();
+                }
             });
         });
     });

@@ -15,7 +15,7 @@ userRouter.post('/', (req,res) => { //create a new user
     };
 
     const validation = Joi.validate(newUser, UserJoiSchema) //we did validation in user.modell.js
-    if (validation.err) {
+    if (validation.error) {
         return res.status(HTTP_CODES.BAD_REQUEST).json({ error: validation.error }); //compare and show err or not show err
     }
 
@@ -38,7 +38,8 @@ userRouter.post('/', (req,res) => { //create a new user
                 return res.status(HTTP_CODES.CREATED).json(createdUser.serialzier()); //serialize. never return raw mongodb data
             })
             .catch(error => {
-                return res.status(HTTP_CODES.INTERNAL_SERVER_ERROR).json(error);
+                console.error(error);
+                return res.status(HTTP_CODES.INTERNAL_SERVER_ERROR).json({error: error.messge});
             });
     });
 });
@@ -55,7 +56,7 @@ userRouter.get('/', (req,res) => { //retrieving all users
         });
 });
 
-userRouter.get('/userid', (req,res) => {
+userRouter.get('/:userid', (req,res) => {
     User.findById(req.params.userid)
         .then(user => {
             return res.status(HTTP_CODES.OK).json(user.serialize());

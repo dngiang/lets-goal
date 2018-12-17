@@ -113,8 +113,8 @@ describe('Integration tests for : /api/auth', function () {
                 const newJwtPayload = jsonwebtoken.verify(res.body.jwtToken, JWT_SECRET, {
                     algorithm: ['HS256']
                 });
-                expect(jwtPayload.user).to.be.a('object');
-                expect(jwtPayload.user).to.deep.include ({
+                expect(newJwtPayload.user).to.be.a('object');
+                expect(newJwtPayload.user).to.deep.include ({
                     username: testUser.username,
                     email: testUser.email,
                     name: testUser.name

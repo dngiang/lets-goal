@@ -6,7 +6,7 @@ const chaiHttp = require('chai-http');
 const jsonwebtoken = require('jsonwebtoken');
 const faker = require('faker');
 
-const { HTTP_STATUS_CODES, JWT_SECRET, JWT_EXPIRY } = require('../app/config');
+const { HTTP_CODES, JWT_SECRET, JWT_EXPIRY } = require('../app/config');
 const { startServer, stopServer, app } = require('../app/server.js');
 const { User } = require('../app/user/user.model');
 const { Goal } = require('../goals/goal.model');
@@ -105,11 +105,11 @@ describe('Integration tests for: /api/goal', function () {
                 expect(res).to.be.json;
                 expect(res.body).to.be.a('array');
                 expect(res.body).to.have.lengthOf.at.least(1);
-                const note = res.body[0];
-                expect(note).to.include.keys('user', 'title', 'content');
-                expect(note.user).to.be.a('object');
-                expect(note.user).to.include.keys('name', 'email', 'username');
-                expect(note.user).to.deep.include({
+                const goal = res.body[0];
+                expect(goal).to.include.keys('user', 'title', 'content');
+                expect(goal.user).to.be.a('object');
+                expect(goal.user).to.include.keys('name', 'email', 'username');
+                expect(goal.user).to.deep.include({
                     id: testUser.id,
                     username: testUser.username,
                     email: testUser.email,
@@ -153,7 +153,7 @@ describe('Integration tests for: /api/goal', function () {
                 goalToUpdate = goals[0];
 
                 return chai.request(app)
-                    .put(`/api/note/${goalToUpdate.id}`)
+                    .put(`/api/goals/${goalToUpdate.id}`)
                     .set('Authorization', `Bearer ${jwtToken}`)
                     .send(newGoalData);
             })
