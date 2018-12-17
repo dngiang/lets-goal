@@ -4,7 +4,7 @@ const chaiHttp = require('chai-http');
 const jsonwebtoken = require('jsonwebtoken');
 const faker = require('faker');
 
-const { HTTP_CODES, JWT_SECRET, JWT_EXPIRY} = require('../api/config'); //look for this end point
+const { HTTP_CODES, JWT_SECRET, JWT_EXPIRY} = require('./api/config'); //look for this end point
 const {startServer, stopServer, app} = require('../app/server.js');
 const { User } = require('../app/user/user.model');
 
