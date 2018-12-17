@@ -4,7 +4,7 @@ const chaiHttp = require('chai-http');
 const jsonwebtoken = require('jsonwebtoken');
 const faker = require('faker');
 
-const { HTTP_CODES, JWT_SECRET, JWT_EXPIRY} = require('../app/config'); //look for this end point
+const { HTTP_CODES, JWT_SECRET, JWT_EXPIRY} = require('../app/config');
 const {startServer, stopServer, app} = require('../app/server.js');
 const { User } = require('../app/user/user.model');
 
@@ -16,9 +16,6 @@ describe('Integration tests for : /api/auth', function () {
 
     before(function () {
         return startServer(true);
-    });
-    after(function() {
-        return stopServer();
     });
 
     beforeEach( function() {
@@ -46,13 +43,12 @@ describe('Integration tests for : /api/auth', function () {
                         },
                         JWT_SECRET,
                         {
-                            algorith: 'HS256',
+                            algorithm: 'HS256',
                             expiresIn: JWT_EXPIRY,
                             subject: testUser.username
                         }
                     );
-                });
-            })
+                })
             .catch(err => {
                 console.error(err);
             });
@@ -71,6 +67,10 @@ describe('Integration tests for : /api/auth', function () {
                 });
             });
         });
+
+    after(function() {
+        return stopServer();
+    });
 
     it('Should login correctly and return a valid JSON Web Token', function () {
         return chai.request(app)
@@ -120,7 +120,7 @@ describe('Integration tests for : /api/auth', function () {
                     name: testUser.name
                 });
 
-                expect(newJwtPayload.exp).to.be.at.least(firstJwtPayload);
+                expect(newJwtPayload.exp).to.be.at.least(firstJwtPayload.exp);
             });
     });
 
@@ -132,3 +132,4 @@ describe('Integration tests for : /api/auth', function () {
             email: faker.internet.email()
         };
     }
+});
