@@ -39,7 +39,7 @@ function startServer(testEnv) {
         let mongoUrl;
 
         if (testEnv) {
-            mongoUrl = 'mongodb://testuser:goaling1@ds237574.mlab.com:37574/test-lets-goal';
+            mongoUrl = 'mongodb://testuser:goaling1@ds237574.mlab.com:37574/lets-goal';
         } else {
             mongoUrl = 'mongodb://testuser:goaling1@ds237574.mlab.com:37574/lets-goal';
         }
