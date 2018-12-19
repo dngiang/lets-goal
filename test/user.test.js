@@ -22,6 +22,7 @@ describe('Integration tests for: /api/user', function () {
         return User.create(testUser)
             .then(() => { })
             .catch(err => {
+                console.err(err);
             });
     });
 
@@ -32,6 +33,7 @@ describe('Integration tests for: /api/user', function () {
                     resolve(result);
                 })
                 .catch(err => {
+                    console.error(err);
                     reject(err);
                 });
         });
@@ -41,13 +43,46 @@ describe('Integration tests for: /api/user', function () {
         return stopServer();
     });
 
+    it('Should return all users', function () { //might not need
+        return chai.request(app)
+            .get('/api/user')
+            .then(res => {
+                expect(res).to.have.status(HTTP_CODES.OK);
+                expect(res).to.be.json;
+                expect(res.body).to.be.a('array');
+                expect(res.body).to.have.lengthOf.at.least(1);
+                expect(res.body[0]).to.include.keys('id', 'name', 'username', 'email');
+                expect(res.body[0]).to.not.include.keys('password');
+            });
+    });
+
+    it('Should return a specific user', function () { //might not need
+        let foundUser;
+        return chai.request(app)
+            .get('/api/user')
+            .then(res => {
+                expect(res).to.have.status(HTTP_CODES.OK);
+                expect(res).to.be.json;
+                expect(res.body).to.be.a('array');
+                expect(res.body).to.have.lengthOf.at.least(1);
+                foundUser = res.body[0];
+                return chai.request(app).get(`/api/user/${foundUser.id}`);
+            })
+            .then(res => {
+                expect(res).to.have.status(HTTP_CODES.OK);
+                expect(res).to.be.json;
+                expect(res.body).to.be.a('object');
+                expect(res.body.id).to.equal(foundUser.id);
+            });
+    });
+
     it('Should create a new user', function () {
         let newUser = createFakerUser();
         return chai.request(app)
-            .post('/api/user')
+            .post('/api/user') //an error here with /api/user endpoint
             .send(newUser)
             .then(res => {
-                expect(res).to.have.status(HTTP_CODES.CREATED);
+                expect(res).to.have.status(201); //201
                 expect(res).to.be.json;
                 expect(res.body).to.be.a('object');
                 expect(res.body).to.include.keys('id', 'name', 'username', 'email');

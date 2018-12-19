@@ -14,7 +14,7 @@ describe ('Integration tests for: /', function() { //this is a MOCHA HOOK: Runs 
         return stopServer(); //since we dont need it anymore
     });
 
-    it('Should return index.html', function() {
+    it('Should return welcome.html', function() {
         chai.request(app)
             .get('/')
             .then( res => {

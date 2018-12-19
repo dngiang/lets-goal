@@ -8,7 +8,7 @@ $(document).ready(onPageLoad);
 function onPageLoad() {
     $('#sign-up-form').submit(onSignUpSubmit);
     $('#login-form').submit(onLoginSubmit);
-}
+};
 
 function onSignUpSubmit(event) {
     event.preventDefault();
@@ -20,17 +20,21 @@ function onSignUpSubmit(event) {
         password: $('#password-txt').val()
     };
 
-    HTTP.signupUser({
+    HTTP.signupUser({ //FIX THIS
         userData,
         onSuccess: user => {
             alert(`User "${user.username}" created, you may now log in.`);
             window.open('/operations/auth/login.html', '_self');
         },
         onError: err => {
-            alert('There was a problem processing your request, please try again later.');
+            if (err.responseJSON.error.details != undefined) {
+            alert(`Your username and password must be at least 9 characters`);
+        } else {
+            alert(`This username is taken, try another one`);
         }
+    }
     });
-}
+};
 
 function onLoginSubmit(event) {
     event.preventDefault();

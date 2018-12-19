@@ -23,7 +23,7 @@ function onCreateSubmit(event) {
         jwtToken: STATE.authUser.jwtToken,
         newGoal: newGoal,
         onSuccess: goal => {
-            alert('Goalcreated succesfully, redirecting ...');
+            alert('Goal created succesfully, redirecting ...');
             window.open(`/goal/details.html?id=${goal.id}`, '_self');
         },
         onError: err => {

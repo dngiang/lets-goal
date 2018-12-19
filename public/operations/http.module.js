@@ -10,7 +10,7 @@ window.HTTP_MODULE = {
     deleteGoal
 };
 
-function signupUser(options) {
+function signupUser(options) { //error HERE! for signup user
     const { userData, onSuccess, onError } = options;
     $.ajax({
         type: 'POST',
