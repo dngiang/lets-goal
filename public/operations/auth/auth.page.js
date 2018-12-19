@@ -24,7 +24,7 @@ function onSignUpSubmit(event) {
         userData,
         onSuccess: user => {
             alert(`User "${user.username}" created, you may now log in.`);
-            window.open('/auth/login.html', '_self');
+            window.open('/operations/auth/login.html', '_self');
         },
         onError: err => {
             alert('There was a problem processing your request, please try again later.');
@@ -47,7 +47,7 @@ function onLoginSubmit(event) {
             authenticatedUser.jwtToken = response.jwtToken;
             CACHE.saveAuthenticatedUserIntoCache(authenticatedUser);
             alert('Login succesful, redirecting you to homepage ...');
-            window.open('/', '_self');
+            window.open('/', '_self'); //because my root '/' is not working!
         },
         onError: err => {
             alert('Incorrect username or password. Please try again.');

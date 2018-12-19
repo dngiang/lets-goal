@@ -1,3 +1,4 @@
+//storing JWTs
 window.CACHE_MODULE = {
     getAuthenticatedUserFromCache,
     saveAuthenticatedUserIntoCache,
