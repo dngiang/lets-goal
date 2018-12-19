@@ -24,10 +24,10 @@ function onCreateSubmit(event) {
         newGoal: newGoal,
         onSuccess: goal => {
             alert('Goal created succesfully, redirecting ...');
-            window.open(`/goal/details.html?id=${goal.id}`, '_self');
+            window.open(`/operations/goal/details.html?id=${goal.id}`, '_self'); //', _self'
         },
         onError: err => {
-            alert('Internal Server Error (see console)');
+            alert('Internal Server Error');
             console.error(err);
         }
     });

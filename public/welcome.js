@@ -25,14 +25,14 @@ function onLogoutBtnClick(event) {
     const confirmation = confirm('Are you sure you want to logout?');
     if (confirmation) {
         CACHE.deleteAuthenticatedUserFromCache();
-        window.open('/auth/login.html', '_self');
+        window.open('/operations/auth/login.html', '_self'); //go back to the login page
     }
 }
 
 // Handle opening goal details
 function onGoalCardClick(event) {
     const goalId = $(event.currentTarget).attr('data-goal-id');
-    window.open(`goal/details.html?id=${goalId}`, '_self');
+    window.open(`/operations/goal/details.html?id=${goalId}`, '_self');
 }
 
 // Handle deleting goals

@@ -21,5 +21,5 @@ function onReady() {
 
 function onEditGoalBtnClick(event) {
     event.preventDefault();
-    window.open(`/goal/edit.html?id=${STATE.goalId}`, '_self');
+    window.open(`/operations/goal/edit.html?id=${STATE.goalId}`, '_self');  //fix this line, OG without operations, , '_self'
 }

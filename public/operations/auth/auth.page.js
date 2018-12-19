@@ -51,7 +51,7 @@ function onLoginSubmit(event) {
             authenticatedUser.jwtToken = response.jwtToken;
             CACHE.saveAuthenticatedUserIntoCache(authenticatedUser);
             alert('Login succesful, redirecting you to homepage ...');
-            window.open('/', '_self'); //because my root '/' is not working!
+            window.open('/welcome.html', '_self'); //because my root '/' is not working!
         },
         onError: err => {
             alert('Incorrect username or password. Please try again.');
