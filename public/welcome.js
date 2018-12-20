@@ -43,16 +43,13 @@ function onDeleteGoalBtnClick(event) {
     const goalId = $(event.currentTarget)
         .closest('#goal-card')
         .attr('data-goal-id');
-    // Step 2: Verify use is sure of deletion
     const userSaidYes = confirm('Are you sure you want to delete this goal?');
     if (userSaidYes) {
-        // Step 3: Make ajax call to delete goal
         HTTP.deleteGoal({
             goalId: goalId,
             jwtToken: STATE.authUser.jwtToken,
             onSuccess: () => {
-                // Step 4: If succesful, reload the goal list
-                alert('Goal deleted succesfully, reloading results ...');
+                // alert('Goal deleted succesfully, reloading results ...');
                 HTTP.getUserGoals({
                     jwtToken: STATE.authUser.jwtToken,
                     onSuccess: RENDER.renderGoalsList

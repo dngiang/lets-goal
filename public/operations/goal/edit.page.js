@@ -31,7 +31,7 @@ function onEditSubmit(event) {
         newGoal: newGoal,
         jwtToken: STATE.authUser.jwtToken,
         onSuccess: goal => {
-            alert('Goal changes saved succesfully, redirecting ...');
+            // alert('Goal changes saved succesfully, redirecting ...');
             window.open(`/operations/goal/details.html?id=${STATE.goalId}`, '_self');
         },
         onError: err => {
