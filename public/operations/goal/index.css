@@ -1,7 +1,6 @@
 /* this css sheet will be applied to create, details and edits page of the app*/
 /* changing the font */
 
-
 * {
     box-sizing: border-box;
 }
@@ -89,10 +88,6 @@ textarea {
 
 #goal-card .card-info {
     margin-top: 0.5rem;
-}
-
-a { /*Addressing Back To Home font*/
-    font: 10px;
 }
 
 .space{

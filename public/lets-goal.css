@@ -87,6 +87,11 @@ textarea {
     margin-left: 5em;
 }
 
+.info-box {
+    text-align: left;
+    font-size: 20px;
+    padding: 10px;
+}
 
 #goal-card .card-header {
     margin-bottom: 0.5rem;

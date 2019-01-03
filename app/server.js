@@ -47,7 +47,7 @@ function startServer(testEnv) {
                 return reject(err);
             } else {
                 server = app.listen(PORT, () => {
-                    console.log(`Express server listening on http://localhost:${PORT}`);
+                    console.log(`Express server listening on http://localhost:${PORT}/welcome.html'`); //double-check this
                     resolve();
                 }).on('error', err => {
                     mongoose.disconnect();
