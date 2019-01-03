@@ -1,4 +1,6 @@
-/*might want to change the format of this as well to make it look for formulated like the other pages*/
+/* this css sheet will be applied to create, details and edits page of the app*/
+/* changing the font */
+
 
 * {
     box-sizing: border-box;
@@ -10,12 +12,13 @@ html {
     margin: 0;
 }
 
-.logo {
-    height: 250px;
-    width: 250px;
+body {
+    padding: 1rem;
+    margin: 0 auto;
+    text-align:center;
 }
 
-.bg-img {
+.bg-goals-img {
     padding: auto;
     height: auto;
     background-image: url(https://images.pexels.com/photos/1242348/pexels-photo-1242348.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
@@ -24,14 +27,6 @@ html {
     background-position: center;
     display: block;
   }
-
-
-body {
-    padding: 1rem;
-    margin: 0 auto;
-    text-align:center;
-}
-
 
 hr {
     border: 0;
@@ -63,13 +58,13 @@ form > label {
     display: block;
 }
 
+
 textarea {
     min-height: 50vh;
 }
 
 .form-field {
     min-width: 80%;
-    border: 1px solid gray;
 }
 
 #login-form label, #sign-up-form label {
@@ -77,16 +72,12 @@ textarea {
     margin: 0.5em 0;
     font-size: 1.3em;
     font-weight: 100;
-    border-radius: 5px;
 }
 
-#auth-menu {
-    border: 2px solid black;
-    border-radius: 5px;
-    margin-right: 5em;
-    margin-left: 5em;
-}
 
+#goal-list {
+    margin: 3rem 0; 
+}
 
 #goal-card .card-header {
     margin-bottom: 0.5rem;
@@ -94,14 +85,19 @@ textarea {
 
 #goal-card .card-content {
     margin: 0.5rem 0;
-    text-align: left;
 }
 
 #goal-card .card-info {
     margin-top: 0.5rem;
-    text-align: left;
 }
 
+a { /*Addressing Back To Home font*/
+    font: 10px;
+}
+
+.space{
+    margin-top: 25px;
+}
 @media screen and (min-width: 500px) {
     body {
         max-width: 500px;
