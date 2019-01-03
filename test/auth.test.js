@@ -19,9 +19,9 @@ describe('Integration tests for : /api/auth', function () {
     });
 
     beforeEach( function() {
-        testUser = createFakerUser(); //create a fakeUser object and manually stored the fake user into mongodb
+        testUser = createFakerUser(); 
 
-        return User.hashPassword(testUser.password).then(hashedPassword => { //look at this
+        return User.hashPassword(testUser.password).then(hashedPassword => {
             return User.create({
                 name: testUser.name,
                 email: testUser.email,
@@ -55,8 +55,8 @@ describe('Integration tests for : /api/auth', function () {
     });
 
     afterEach(function () {
-        return new Promise((resolve,reject) => { //return new Promise or else Mocha wont know to stop running
-            mongoose.connection.dropDatabase() //delete the entire db so there is no leftovers from previous test run
+        return new Promise((resolve,reject) => {
+            mongoose.connection.dropDatabase() 
                 .then(result => {
                     resolve(result);
                 })
@@ -73,7 +73,7 @@ describe('Integration tests for : /api/auth', function () {
 
     it('Should login correctly and return a valid JSON Web Token', function () {
         return chai.request(app)
-            .post('/api/auth/login') //must match with authRouter!
+            .post('/api/auth/login') 
             .send({
                 username: testUser.username,
                 password: testUser.password
@@ -96,7 +96,7 @@ describe('Integration tests for : /api/auth', function () {
             });
     });
 
-    it('Should resfresh the user JSON Web Token', function () { //because we already have jwtToken for refresh
+    it('Should resfresh the user JSON Web Token', function () {
         const firstJwtPayload = jsonwebtoken.verify(jwtToken, JWT_SECRET, {
             algorithm: ['HS256']
         });

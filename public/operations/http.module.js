@@ -1,5 +1,3 @@
-//server side call, jquery, request, sign-up, etc
-
 window.HTTP_MODULE = {
     signupUser,
     loginUser,
@@ -10,7 +8,7 @@ window.HTTP_MODULE = {
     deleteGoal
 };
 
-function signupUser(options) { //error HERE! for signup user
+function signupUser(options) {
     const { userData, onSuccess, onError } = options;
     $.ajax({
         type: 'POST',

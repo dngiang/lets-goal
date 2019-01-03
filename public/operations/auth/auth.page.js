@@ -1,4 +1,3 @@
-// All these modules are are defined in /public/operations
 const RENDER = window.RENDER_MODULE;
 const HTTP = window.HTTP_MODULE;
 const CACHE = window.CACHE_MODULE;
@@ -20,7 +19,7 @@ function onSignUpSubmit(event) {
         password: $('#password-txt').val()
     };
 
-    HTTP.signupUser({ //FIX THIS
+    HTTP.signupUser({ 
         userData,
         onSuccess: user => {
             alert(`User "${user.username}" created, you may now log in.`);
@@ -50,8 +49,7 @@ function onLoginSubmit(event) {
             const authenticatedUser = response.user;
             authenticatedUser.jwtToken = response.jwtToken;
             CACHE.saveAuthenticatedUserIntoCache(authenticatedUser);
-            // alert('Login succesful, redirecting you to homepage ...');
-            window.open('/welcome.html', '_self'); //because my root '/' is not working!
+            window.open('/welcome.html', '_self');
         },
         onError: err => {
             alert('Incorrect username or password. Please try again.');

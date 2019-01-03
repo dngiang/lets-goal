@@ -1,5 +1,5 @@
 let STATE = {};
-// All these modules are are defined in operations js file
+
 const RENDER = window.RENDER_MODULE;
 const HTTP = window.HTTP_MODULE;
 const CACHE = window.CACHE_MODULE;
@@ -25,17 +25,16 @@ function onLogoutBtnClick(event) {
     const confirmation = confirm('Are you sure you want to logout?');
     if (confirmation) {
         CACHE.deleteAuthenticatedUserFromCache();
-        window.open('/operations/auth/login.html', '_self'); //go back to the login page
+        window.open('/operations/auth/login.html', '_self'); 
     }
 }
 
-// Handle opening goal details
+
 function onGoalCardClick(event) {
     const goalId = $(event.currentTarget).attr('data-goal-id');
     window.open(`/operations/goal/details.html?id=${goalId}`, '_self');
 }
 
-// Handle deleting goals
 function onDeleteGoalBtnClick(event) {
 
     event.stopImmediatePropagation(); 
@@ -49,7 +48,6 @@ function onDeleteGoalBtnClick(event) {
             goalId: goalId,
             jwtToken: STATE.authUser.jwtToken,
             onSuccess: () => {
-                // alert('Goal deleted succesfully, reloading results ...');
                 HTTP.getUserGoals({
                     jwtToken: STATE.authUser.jwtToken,
                     onSuccess: RENDER.renderGoalsList

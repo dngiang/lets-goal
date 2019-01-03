@@ -2,14 +2,14 @@ const mongoose = require('mongoose');
 const Joi = require('joi');
 
 const goalSchema = new mongoose.Schema( {
-    user: {type: mongoose.Schema.Types.ObjectId, ref: 'user'}, //link each goal to the user (need to be exactly the same as user.model.js)
+    user: {type: mongoose.Schema.Types.ObjectId, ref: 'user'}, 
     title:{type: String, required: true},
     content: {type:String, required: true},
     createDate: {type: Date},
     updateDate: {type: Date, default: Date.now}
 });
 
-goalSchema.methods.serialize = function () { //reassign the user with serialized
+goalSchema.methods.serialize = function () { 
     let user;
 
     if( typeof this.user.serialize === 'function') {
@@ -18,7 +18,7 @@ goalSchema.methods.serialize = function () { //reassign the user with serialized
         user = this.user;
     }
 
-    return { //return the actual goal
+    return { 
         id: this._id,
         user: user,
         title: this.title,
@@ -35,6 +35,6 @@ const GoalJoiSchema = Joi.object().keys({
     createDate: Joi.date().timestamp()
 });
 
-const Goal = mongoose.model('goal', goalSchema); //everything we create on mongoose, it will use this schema, can do CRUD on database
+const Goal = mongoose.model('goal', goalSchema);
 
 module.exports = {Goal, GoalJoiSchema};

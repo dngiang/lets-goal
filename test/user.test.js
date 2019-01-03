@@ -43,7 +43,7 @@ describe('Integration tests for: /api/user', function () {
         return stopServer();
     });
 
-    it('Should return all users', function () { //might not need
+    it('Should return all users', function () { 
         return chai.request(app)
             .get('/api/user')
             .then(res => {
@@ -56,7 +56,7 @@ describe('Integration tests for: /api/user', function () {
             });
     });
 
-    it('Should return a specific user', function () { //might not need
+    it('Should return a specific user', function () {
         let foundUser;
         return chai.request(app)
             .get('/api/user')
@@ -79,10 +79,10 @@ describe('Integration tests for: /api/user', function () {
     it('Should create a new user', function () {
         let newUser = createFakerUser();
         return chai.request(app)
-            .post('/api/user') //an error here with /api/user endpoint
+            .post('/api/user') 
             .send(newUser)
             .then(res => {
-                expect(res).to.have.status(201); //201
+                expect(res).to.have.status(201);
                 expect(res).to.be.json;
                 expect(res.body).to.be.a('object');
                 expect(res.body).to.include.keys('id', 'name', 'username', 'email');

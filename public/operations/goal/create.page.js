@@ -1,5 +1,4 @@
 let STATE = {};
-// All these modules are are defined in /public/operations
 const RENDER = window.RENDER_MODULE;
 const HTTP = window.HTTP_MODULE;
 const CACHE = window.CACHE_MODULE;
@@ -23,8 +22,8 @@ function onCreateSubmit(event) {
         jwtToken: STATE.authUser.jwtToken,
         newGoal: newGoal,
         onSuccess: goal => {
-            // alert('Goal created succesfully, redirecting ...');
-            window.open(`/operations/goal/details.html?id=${goal.id}`, '_self'); //', _self'
+
+            window.open(`/welcome.html`, '_self');
         },
         onError: err => {
             alert('Internal Server Error');

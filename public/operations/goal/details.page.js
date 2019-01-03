@@ -1,5 +1,4 @@
 let STATE = {};
-// All these modules are are defined in /public/operations
 const RENDER = window.RENDER_MODULE;
 const HTTP = window.HTTP_MODULE;
 const CACHE = window.CACHE_MODULE;
@@ -21,5 +20,5 @@ function onReady() {
 
 function onEditGoalBtnClick(event) {
     event.preventDefault();
-    window.open(`/operations/goal/edit.html?id=${STATE.goalId}`, '_self');  //fix this line, OG without operations, , '_self'
+    window.open(`/operations/goal/edit.html?id=${STATE.goalId}`, '_self');
 }

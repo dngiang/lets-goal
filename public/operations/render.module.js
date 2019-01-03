@@ -1,4 +1,4 @@
-//render html in jquery
+
 window.RENDER_MODULE = {
     renderGoalsList,
     renderGoalDetails,

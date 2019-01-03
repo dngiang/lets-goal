@@ -1,7 +1,6 @@
-// || is used to check if the PORT exists, if not, return to 8080
 module.exports = {
 
-    PORT: process.env.PORT || 8080, //personal preference
+    PORT: process.env.PORT || 8080,
     HTTP_CODES : {
         OK: 200,
         CREATED: 201,

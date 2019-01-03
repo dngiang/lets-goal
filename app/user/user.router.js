@@ -6,21 +6,20 @@ const { User, UserJoiSchema} = require('./user.model');
 
 const userRouter = express.Router();
 
-userRouter.post('/', (req,res) => { //create a new user
-    const newUser = { //in server.js, we did express.json() to parse the body
+userRouter.post('/', (req,res) => {
+    const newUser = { 
         name: req.body.name,
         email: req.body.email,
         username: req.body.username,
         password: req.body.password,
     };
 
-    const validation = Joi.validate(newUser, UserJoiSchema) //we did validation in user.modell.js
+    const validation = Joi.validate(newUser, UserJoiSchema)
     if (validation.error) {
-        return res.status(HTTP_CODES.BAD_REQUEST).json({ error: validation.error }); //compare and show err or not show err
+        return res.status(HTTP_CODES.BAD_REQUEST).json({ error: validation.error });
     }
 
     User.findOne({ 
-        //check if the username and user already exist
         $or: [
             { email: newUser.email },
             { username: newUser.username} 
@@ -33,9 +32,9 @@ userRouter.post('/', (req,res) => { //create a new user
     }).then(passwordHash => {
         newUser.password = passwordHash;
 
-        User.create(newUser) //creating new user
+        User.create(newUser)
             .then(createdUser => {
-                return res.status(HTTP_CODES.CREATED).json(createdUser.serialize()); //serialize. never return raw mongodb data
+                return res.status(HTTP_CODES.CREATED).json(createdUser.serialize());
             })
             .catch(error => {
                 console.error(error);
@@ -44,11 +43,11 @@ userRouter.post('/', (req,res) => { //create a new user
     });
 });
 
-userRouter.get('/', (req,res) => { //retrieving all users
+userRouter.get('/', (req,res) => {
     User.find()
         .then(users => {
             return res.status(HTTP_CODES.OK).json(
-                users.map(user => user.serialize()) //map the array and return all serialized
+                users.map(user => user.serialize())
             );
         })
         .catch(error => {

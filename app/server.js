@@ -1,10 +1,10 @@
 const express = require('express');
 const morgan = require('morgan');
-const mongoose = require('mongoose'); //connect to mongo db
+const mongoose = require('mongoose');
 const passport = require('passport');
 
 const { PORT, HTTP_CODES, MONGO_URL, TEST_MONGO_URL} = require('./config');
-const { localStrategy, jwtStrategy } = require('../auth/auth.strategy'); //we need to tell passport to .use in order to activate it
+const { localStrategy, jwtStrategy } = require('../auth/auth.strategy');
 
 const { userRouter } = require('./user/user.router');
 const { authRouter } = require('../auth/auth.router');
@@ -14,16 +14,15 @@ mongoose.Promise = global.Promise;
 
 let server;
 
-const app = express(); //create app for express
+const app = express();
 passport.use(localStrategy);
 passport.use(jwtStrategy);
 
-//middleware, intercept calls b4 they get to the server
 app.use(morgan('common'));
-app.use(express.json()); //access the body content inside express
+app.use(express.json());
 app.use(express.static('./public'));
 
-app.use('/api/user', userRouter); //setting the user route for userRouter in user.router.js module.exports, dbs for server code ONLY, no public folder
+app.use('/api/user', userRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/goal', goalRouter);
 
@@ -62,7 +61,7 @@ function startServer(testEnv) {
 function stopServer() {
     return mongoose.disconnect().then(() => {
         return new Promise ((resolve, reject) => {
-            server.close(err => {  //only possible because server is a glocal variable from previous assignment
+            server.close(err => {
                 if(err) {
                     console.log(err);
                     return reject (err);
