@@ -54,7 +54,6 @@ form > label {
     display: block;
 }
 
-
 textarea {
     min-height: 50vh;
 }
@@ -69,7 +68,6 @@ textarea {
     font-size: 1.3em;
     font-weight: 100;
 }
-
 
 #goal-list {
     margin: 3rem 0; 
@@ -90,6 +88,7 @@ textarea {
 .space{
     margin-top: 25px;
 }
+
 @media screen and (min-width: 500px) {
     body {
         max-width: 500px;

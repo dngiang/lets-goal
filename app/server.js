@@ -12,8 +12,6 @@ const { goalRouter } = require('../goals/goal.router');
 
 mongoose.Promise = global.Promise;
 
-let server;
-
 const app = express();
 passport.use(localStrategy);
 passport.use(jwtStrategy);
@@ -30,8 +28,8 @@ app.use('*', function (req, res) {
     res.status(HTTP_CODES.NOT_FOUND).json({error: 'Not found.'});
 });
 
+let server;
 function startServer(testEnv) {
-
     return new Promise((resolve, reject) => {
         let mongoUrl;
 

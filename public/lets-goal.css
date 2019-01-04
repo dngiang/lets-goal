@@ -57,6 +57,10 @@ button:hover, input[type=submit]:hover {
     border: 1px solid black;
 }
 
+#logout-btn {
+    margin-bottom: 10px;
+}
+
 form > label {
     display: block;
 }
