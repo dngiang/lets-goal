@@ -12,7 +12,7 @@ module.exports = {
     },
 
     MONGO_URL: process.env.MONGO_URL || 'mongodb://testuser:goaling1@ds237574.mlab.com:37574/lets-goal',
-    TEST_MONGO_URL: process.env.TEST_MONGO_URL || 'mongodb://testuser:goaling1@ds237574.mlab.com:37574/test-lets-goal',
+    TEST_MONGO_URL: process.env.TEST_MONGO_URL || 'mongodb://admin:goaling1@ds159497.mlab.com:59497/test-lets-goal',
     JWT_SECRET: process.env.JWT_SECRET || 'default',
     JWT_EXPIRY: process.env.JWT_EXPIRY || '7d'
 };
