@@ -7,15 +7,26 @@
 <h2 align="center"> Ready. Get Set. Goal.
 </h2>
 
-<p align="center">
-<a href="https://mighty-oasis-59597.herokuapp.com/">
-<img src="src/app/images/website-button.png" alt="Live Page" height=40>
-</a>
+## Link
+[Live Page](https://mighty-oasis-59597.herokuapp.com//)
 
 ## About
 
 Are there goals you want to achieve but constantly find yourself forgetting them? With "Let's Goal", you can create, edit and keep track of them. We promise, we are with you in this journey.
 
+## Screenshots
+<img src="https://github.com/dngiang/lets-goal/blob/master/img/LandingPage.jpg" alt="Landing Page"  height=400 width=1000>
+<p>
+</p>
+
+<img src="https://github.com/dngiang/lets-goal/blob/master/img/DetailsPage.jpg" alt="Details Page" height=250 width=400>
+<p>
+</p>
+
+<img src="https://github.com/dngiang/lets-goal/blob/master/img/EditPage.jpg" alt="Edit Page" height=250 width=400>
+<p>
+</p>
+   
 ## Tech Stack
 
 <ul>
