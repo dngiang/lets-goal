@@ -42,12 +42,14 @@ button, input[type=submit] {
     border: 1px solid black;
     color: white;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 button:hover, input[type=submit]:hover {
     background-color:white;
     color: black;
     border: 1px solid black;
+    cursor: pointer;
 }
 
 form > label {

@@ -23,7 +23,7 @@ function onCreateSubmit(event) {
         newGoal: newGoal,
         onSuccess: goal => {
 
-            window.open(`/welcome.html`, '_self');
+            window.open(`/index.html`, '_self');
         },
         onError: err => {
             alert('Internal Server Error');

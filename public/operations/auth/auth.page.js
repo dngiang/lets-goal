@@ -49,7 +49,7 @@ function onLoginSubmit(event) {
             const authenticatedUser = response.user;
             authenticatedUser.jwtToken = response.jwtToken;
             CACHE.saveAuthenticatedUserIntoCache(authenticatedUser);
-            window.open('/welcome.html', '_self');
+            window.open('/index.html', '_self');
         },
         onError: err => {
             alert('Incorrect username or password. Please try again.');

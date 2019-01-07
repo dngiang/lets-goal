@@ -25,7 +25,7 @@ app.use('/api/auth', authRouter);
 app.use('/api/goal', goalRouter);
 
 app.use('*', function (req, res) {
-    res.status(HTTP_CODES.NOT_FOUND).json({error: 'Not found.'});
+    res.status(HTTP_CODES.NOT_FOUND).json({error: 'Not found.'}); //POTENTIAL ERROR
 });
 
 let server;
@@ -44,7 +44,7 @@ function startServer(testEnv) {
                 return reject(err);
             } else {
                 server = app.listen(PORT, () => {
-                    console.log(`Express server listening on http://localhost:${PORT}/welcome.html'`); //double-check this
+                    console.log(`Express server listening on http://localhost:${PORT}/index.html'`); //double-check this
                     resolve();
                 }).on('error', err => {
                     mongoose.disconnect();
