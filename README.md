@@ -21,7 +21,7 @@ Are there goals you want to achieve but constantly find yourself forgetting them
 <img align="center" src="https://github.com/dngiang/lets-goal/blob/master/img/LandingPage.jpg" alt="Landing Page"  height=400 width=1000>
 
 <p>
-    Take a took at your goal daily to remind yourself what you want to achieve.
+    Take a look at your goal daily to remind yourself what you want to achieve.
 </p>
 <img align="center" src="https://github.com/dngiang/lets-goal/blob/master/img/DetailsPage.jpg" alt="Details Page" height=250 width=400>
 
