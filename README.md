@@ -33,7 +33,7 @@ Are there goals you want to achieve but constantly find yourself forgetting them
 ## Tech Stack
 
 <ul>
-  <li>HTML, CSS</li>
+  <li>HTML, CSS, JS</li>
   <li>Node, Express, Passport</li>
   <li>Mocha, Chai</li>
   <li>TravisCI</li>
@@ -41,5 +41,3 @@ Are there goals you want to achieve but constantly find yourself forgetting them
   <li>Heroku</li>
   <li>Github</li>
 </ul>
-
-<br>
