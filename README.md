@@ -7,19 +7,33 @@
 <h2 align="center"> Ready. Get Set. Goal.
 </h2>
 
-<p align="center">
-<a href="https://mighty-oasis-59597.herokuapp.com/">
-<img src="src/app/images/website-button.png" alt="Live Page" height=40>
-</a>
+## Link
+[Live Page](https://mighty-oasis-59597.herokuapp.com//)
 
 ## About
 
 Are there goals you want to achieve but constantly find yourself forgetting them? With "Let's Goal", you can create, edit and keep track of them. We promise, we are with you in this journey.
 
+## Screenshots
+<p>
+    Create an account and let's get started! A good year is ahead of you.
+</p>
+<img align="center" src="https://github.com/dngiang/lets-goal/blob/master/img/LandingPage.jpg" alt="Landing Page"  height=400 width=1000>
+
+<p>
+    Take a look at your goal daily to remind yourself what you want to achieve.
+</p>
+<img align="center" src="https://github.com/dngiang/lets-goal/blob/master/img/DetailsPage.jpg" alt="Details Page" height=250 width=400>
+
+<p>
+    Keep up the progress and update them daily!
+</p>
+<img align="center" src="https://github.com/dngiang/lets-goal/blob/master/img/EditPage.jpg" alt="Edit Page" height=250 width=400>
+   
 ## Tech Stack
 
 <ul>
-  <li>HTML, CSS</li>
+  <li>HTML, CSS, JS</li>
   <li>Node, Express, Passport</li>
   <li>Mocha, Chai</li>
   <li>TravisCI</li>
@@ -27,5 +41,3 @@ Are there goals you want to achieve but constantly find yourself forgetting them
   <li>Heroku</li>
   <li>Github</li>
 </ul>
-
-<br>
