@@ -6,6 +6,7 @@ html {
     font-size: 20px;
     padding: 0;
     margin: 0;
+    height:100%;
 }
 
 .logo {
@@ -14,11 +15,9 @@ html {
 }
 
 .bg-img {
-    padding: auto;
-    height: auto;
-    background-image: url(https://images.pexels.com/photos/1242348/pexels-photo-1242348.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+    background-image: url(https://images.pexels.com/photos/1001764/pexels-photo-1001764.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     background-position: center;
     display: block;
   }
