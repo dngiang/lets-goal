@@ -18,7 +18,7 @@ Are there goals you want to achieve but constantly find yourself forgetting them
 <p>
     Create an account and let's get started! A good year is ahead of you.
 </p>
-<img align="center" src="https://github.com/dngiang/lets-goal/blob/master/img/LandingPage.jpg" alt="Landing Page"  height=400 width=1000>
+<img align="center" src="https://github.com/dngiang/lets-goal/blob/master/img/LandingPage.jpg" alt="Landing Page"  height=400 width=800>
 
 <p>
     Take a look at your goal daily to remind yourself what you want to achieve.
